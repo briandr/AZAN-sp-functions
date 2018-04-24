@@ -4,6 +4,7 @@ using System.Net;
 using OfficeDevPnP.Core;
 using OfficeDevPnP.Core.Utilities;
 using PnPAuthenticationManager = OfficeDevPnP.Core.AuthenticationManager;
+using OfficeDevPnP.Core.Utilities;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
