@@ -20,6 +20,9 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
     string userName = System.Environment.GetEnvironmentVariable("SharePointUser", EnvironmentVariableTarget.Process);
     string password = System.Environment.GetEnvironmentVariable("SharePointPassword", EnvironmentVariableTarget.Process);
+    log.Info($"pwd = '{password}'"); 
+    var spoPassword = Utilities.EncryptionUtility.ToSecureString(password);
+    log.Info($"secpwd = '{spoPassword}'");
 
     var authenticationManager = new PnPAuthenticationManager();
     var clientContext = authenticationManager.GetSharePointOnlineAuthenticatedContextTenant(sharePointSiteUrl, userName, password);
