@@ -41,7 +41,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
         resultMessage = "Folder already exists";
     }
     
-    return req.CreateResponse(HttpStatusCode.OK, resultMessage);
+    return req.CreateResponse(HttpStatusCode.OK, new{result = resultMessage});
 }
 
 public static bool doesFolderExist(PnPClientContext clientContext, string folderUrl)
