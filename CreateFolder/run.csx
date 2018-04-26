@@ -7,7 +7,7 @@ using PnPAuthenticationManager = OfficeDevPnP.Core.AuthenticationManager;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
-
+    // this is an update from GitHub
     dynamic data = await req.Content.ReadAsAsync<object>();
 
     string sharePointSiteUrl = data["sharePointSiteUrl"];
