@@ -44,7 +44,54 @@
           }
         ]
       }
-    }
+    },
+    "/api/GetFileName": {
+      "post": {
+        "operationId": "GetFileName",
+        "description": "Get the next available non-duplicate file name",
+        "summary": "Return next available file name",
+        "x-ms-summary": "Return next file name",
+        "x-ms-visibility": "important",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "File Creation Info",
+            "in": "body",
+            "description": "File Creation Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/fileCreationInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Available filename",
+            "x-ms-summary": "Filename",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Returns filename not in use",
+                  "x-ms-summary": "Message"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apikeyQuery": []
+          }
+        ]
+      }
+    }    
   },
   "definitions": {
     "folderCreationInfo": {
@@ -60,7 +107,21 @@
           "type": "string"
         }
       }
-    }
+    },
+    "fileCreationInfo": {
+      "type": "object",
+      "properties": {
+        "sharePointSiteUrl": {
+          "type": "string"
+        },
+        "baseFolderServerRelativeUrl": {
+          "type": "string"
+        },
+        "newFolderName": {
+          "type": "string"
+        }
+      }
+    }    
   },
   "securityDefinitions": {
     "apikeyQuery": {
